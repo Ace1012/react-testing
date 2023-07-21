@@ -1,0 +1,60 @@
+details summary::-webkit-details-marker {
+  display: none;
+}
+details > summary {
+  display: flex;
+  cursor: pointer;
+  background-color: gray;
+  color: var(--primary);
+  font-weight: 900;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+details > summary > span {
+  width: 20ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+details[open] > summary > span {
+  margin: 1rem;
+  width: 20ch;
+  white-space: pre;
+}
+
+.reddit-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid white;
+  border: 1px solid var(--tertiary);
+  padding: 1rem;
+  width: 60vw;
+}
+.reddit-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  background-color: gray;
+  background-color: var(--primary);
+  color: var(--tertiary);
+  width: 100%;
+  padding: 0.25rem;
+}
+.reddit-comment > .replies-container {
+  /* background-color: rosybrown; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+.replies-container > .replies {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 95%;
+}
+.reddit-comment > .replies > span {
+  align-self: flex-start;
+}
