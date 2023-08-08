@@ -12,6 +12,8 @@ import { FormProvider } from './contexts/form';
 import CustomFormDisplay from './components/form/customFormDisplay';
 import StyledComponentsPlayground from './components/styledComponentsPlayground';
 import UserTable from './components/Table/userTable';
+import MUIPlayground from './components/MUIPlayground/muiPlayground';
+import { ReactQueryPlayground } from './components/ReactQuery';
 
 const STYLES: React.CSSProperties = {
   display: "flex",
@@ -40,7 +42,7 @@ function App() {
 
   return (
     <div style={STYLES}>
-      <h1>App</h1>
+      {/* <h1>App</h1> */}
       {/* {Timer({ render })} */}
       {/* <Timer render={render} /> */}
       {/* <Counter /> */}
@@ -54,13 +56,15 @@ function App() {
       {/* <ThemeProvider>
         <RedditThread />
       </ThemeProvider> */}
-      <FormProvider>
+      {/* <FormProvider>
         <CustomForm />
         <CustomFormDisplay label='firstName' />
         <CustomFormDisplay label='lastName' />
-      </FormProvider>
+      </FormProvider> */}
       {/* <StyledComponentsPlayground /> */}
       {/* <UserTable /> */}
+      {/* <MUIPlayground /> */}
+      <ReactQueryPlayground />
     </div>
   )
 }

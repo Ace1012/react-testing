@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { mockedErrorUseFetchResult, mockedLoadingUseFetchResult, mockedUseFetchResult } from '../constants/constants';
-import { createMockedUseFetch } from '../utilities';
+import { createMockedUseFetch } from '../utilities/mockedHooks';
 import { describe, expect, test, vi } from "vitest";
 import { Users } from '../components';
 import { IUser } from '../components/users';

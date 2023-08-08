@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { RStore, Store, useStoreData } from "../utilities/customStore";
 
 type IFormContext = RStore;
@@ -24,6 +24,8 @@ function useFormContext<SelectorOutput>(selector: (store: Store) => SelectorOutp
     if (!formStore) {
         throw new Error("Must use useForm within a FormProvider!")
     }
+
+    // const state = useSyncExternalStore(formStore.subscribe, () => selector(formStore.get()))
 
     const [state, setState] = useState(selector(formStore.get()));
 

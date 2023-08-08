@@ -28,6 +28,40 @@ body {
   min-height: 100vh;
 }
 
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+ul,
+ol {
+  display: flex;
+  gap: 1rem;
+}
+
+nav.heroes {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rosybrown;
+  height: 50px;
+  padding: 0 1rem;
+
+  & li {
+    & > a {
+      color: black;
+
+      &:hover {
+        color: white ;
+      }
+    }
+  }
+}
+
 table {
   border-spacing: 0;
 }

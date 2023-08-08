@@ -1,5 +1,5 @@
 import { describe, test, vi } from "vitest";
-import { createMockedUseFetch } from "../utilities";
+import { createMockedUseFetch } from "../utilities/mockedHooks";
 import { waitFor } from "@testing-library/react";
 
 import { IUser } from "../components/users";

@@ -8,13 +8,21 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest --watch",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "server-json": "json-server --watch db.json --port 4000"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/system": "^5.14.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "json-server": "^0.17.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.2",
     "styled-components": "^6.0.4"
   },
   "devDependencies": {
