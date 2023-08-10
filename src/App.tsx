@@ -14,6 +14,7 @@ import StyledComponentsPlayground from './components/styledComponentsPlayground'
 import UserTable from './components/Table/userTable';
 import MUIPlayground from './components/MUIPlayground/muiPlayground';
 import { ReactQueryPlayground } from './components/ReactQuery';
+import SvgPlayground from './components/SvgTesting/svgPlayground';
 
 const STYLES: React.CSSProperties = {
   display: "flex",
@@ -23,6 +24,8 @@ const STYLES: React.CSSProperties = {
   border: "1px solid black",
   minHeight: "100vh",
   minWidth: "100vw",
+  height: "100vh",
+  width: "100vw",
   padding: "1rem",
   gap: "1rem",
   overflow: "hidden"
@@ -64,7 +67,8 @@ function App() {
       {/* <StyledComponentsPlayground /> */}
       {/* <UserTable /> */}
       {/* <MUIPlayground /> */}
-      <ReactQueryPlayground />
+      {/* <ReactQueryPlayground /> */}
+      <SvgPlayground />
     </div>
   )
 }
