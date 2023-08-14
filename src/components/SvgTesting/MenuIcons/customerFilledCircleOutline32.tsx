@@ -6,7 +6,7 @@ interface ICustomerFilledCircleOutlineProps extends IMenuIcon { }
 const CustomerFilledCircleOutline = ({ fill = "white", size }: ICustomerFilledCircleOutlineProps) => {
     const { myThemeSize } = useMyTheme();
     return (
-        <svg width={size ?? myThemeSize} height={size ?? myThemeSize} viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <title>MenuIconCustomerFilledCircleOutline32</title>
             <g id="MenuIconCustomerFilledCircleOutline32" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="iconmonstr-user-20" transform="translate(4.000000, 4.000000)">

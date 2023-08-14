@@ -15,24 +15,27 @@ const StyledWrapper = styled("div")`
 `
 
 const QuickActionsContainer = ({ }: IQuickActionsContainerProps) => {
-    
+
     return (
         <StyledWrapper>
-                <MyThemeProvider>
-                    <QuickAction title="Scan" description="Lorem ipsum dolor sit amet consectetur.">
-                        <BarcodeOutline54 />
-                    </QuickAction>
-                    <QuickAction title="Search" description="Lorem ipsum dolor sit amet consectetur.">
-                        <SearchOutline54 />
-                    </QuickAction>
-                    <QuickAction title="Customer" description="Lorem ipsum dolor sit amet consectetur.">
-                        <CustomerFilledCircleOutline32 />
-                        {/* <CustomerFilledCircleOutline54 /> */}
-                    </QuickAction>
-                    <QuickAction title="Cart" description="Lorem ipsum dolor sit amet consectetur.">
-                        <ShoppingBagOutline54 />
-                    </QuickAction>
-                </MyThemeProvider>
+            <MyThemeProvider>
+                {/* <QuickAction title="Scan" description="Lorem ipsum dolor sit amet consectetur.">
+                    <BarcodeOutline54 fill="green" />
+                </QuickAction>
+                <QuickAction title="Search" description="Lorem ipsum dolor sit amet consectetur.">
+                    <SearchOutline54 fill="green" />
+                </QuickAction>
+                <QuickAction title="Customer" description="Lorem ipsum dolor sit amet consectetur.">
+                    <CustomerFilledCircleOutline32 fill="green" />
+                </QuickAction>
+                <QuickAction title="Cart" description="Lorem ipsum dolor sit amet consectetur.">
+                    <ShoppingBagOutline54 fill="green" />
+                </QuickAction> */}
+                <QuickAction title="Scan" description="Lorem ipsum dolor sit amet consectetur." iconName="BARCODE_OUTLINE_54" />
+                <QuickAction title="Search" description="Lorem ipsum dolor sit amet consectetur." iconName="SEARCH_OUTLINE_54" />
+                <QuickAction title="Customer" description="Lorem ipsum dolor sit amet consectetur." iconName="CUSTOMER_FILLED_CIRCLE_OUTLINE_32" />
+                <QuickAction title="Cart" description="Lorem ipsum dolor sit amet consectetur." iconName="SHOPPING_BAG_OUTLINE_54" />
+            </MyThemeProvider>
         </StyledWrapper>
     )
 }

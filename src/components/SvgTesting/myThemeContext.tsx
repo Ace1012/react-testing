@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface IThemeContext {
-    myThemeSize: number
+    myThemeSize: number;
+    showDescription: boolean;
 }
 
 interface IThemeProviderProps {
@@ -12,6 +13,7 @@ const ThemeContext = createContext({} as IThemeContext)
 
 const MyThemeProvider = ({ children }: IThemeProviderProps) => {
     const [size, setSize] = useState(54);
+    const [showDescription, setShowDescription] = useState(true);
 
     function resizeIcons() {
         const width = window.innerWidth;
@@ -19,16 +21,18 @@ const MyThemeProvider = ({ children }: IThemeProviderProps) => {
         switch (true) {
             case width <= 600: {
                 console.log("small")
-                setSize(18)
+                setSize(18);
             }
-                break;
+            break;
             case width <= 900: {
                 console.log("medium")
+                setShowDescription(false)
                 setSize(36)
             }
                 break;
             case width <= 1200: {
                 console.log("large")
+                setShowDescription(true)
                 setSize(54)
             }
                 break;
@@ -45,7 +49,7 @@ const MyThemeProvider = ({ children }: IThemeProviderProps) => {
     }, []);
 
     return (
-        <ThemeContext.Provider value={{ myThemeSize: size }}>
+        <ThemeContext.Provider value={{ myThemeSize: size, showDescription }}>
             {children}
         </ThemeContext.Provider>
     )

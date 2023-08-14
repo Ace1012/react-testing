@@ -1,10 +1,14 @@
 import { styled } from "@mui/system";
 import { useMyTheme } from "./myThemeContext";
+import SVGWrapper from "./svgWrapper";
+import { menuIconsMapper } from "./@types/MenuIconsMap/menuIconsMap";
+import { Suspense } from "react";
 
 interface IQuickActionProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     title: string;
     description: string;
+    iconName: Menu.Icon.MenuIconName
 }
 
 const StyledWrapper = styled("div")`
@@ -23,22 +27,6 @@ const StyledWrapper = styled("div")`
     }
 `
 
-const SVGWrapper = styled("div") <{ $size: number }>`
-    background-color: maroon;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: ${({ $size }) => ($size)};
-    aspect-ratio: 1;
-    border-radius: 50%;
-
-    & #color-ernstingsDarkYellow,
-    & #Shape,
-    & #Group-2{
-        fill: ${({ theme }) => theme.palette.testing.main};
-    }
-`
-
 const QuickActionIcon = styled("div")`
     display: flex;
     justify-content: center;
@@ -54,39 +42,53 @@ const QuickActionDescription = styled("div")`
     
     ${({ theme }) => theme.breakpoints.down("sm")}{
         & > p{
-        font-size: x-small;
-        line-height: 0.5rem;
-    }
+            font-size: x-small;
+            line-height: 0.5rem;
+        }
     }
     
     ${({ theme }) => theme.breakpoints.down("md")}{
         & > p{
-        font-size: smaller;
-        line-height: 0.75rem;
-    }
+            font-size: smaller;
+            line-height: 0.75rem;
+        }
     }
     
     ${({ theme }) => theme.breakpoints.down("lg")}{
         & > p{
-        font-size: small;
-        line-height: 1rem;
-    }
+            font-size: small;
+            line-height: 1rem;
+        }
     }
 
 `
 
-const QuickAction = ({ children, title, description }: IQuickActionProps) => {
-    const { myThemeSize: size } = useMyTheme();
+//TODO: - Create a map -> key: Name of icon | value: JSX.Element to be rendered.
+//      - Incorporate lazy-loading.
+
+const QuickAction = ({ children, title, description, iconName }: IQuickActionProps) => {
+    const { myThemeSize: size, showDescription } = useMyTheme();
+
+    const SVGChild = menuIconsMapper[iconName];
+    const SuspenseTrigger = () => {
+        throw new Promise(() => { })
+    }
+
     return (
         <StyledWrapper>
             <QuickActionIcon>
-                <SVGWrapper $size={size}>
-                    {children}
+                <SVGWrapper size={size} fill="white">
+                    {/* {children} */}
+                    <Suspense fallback={<span>Loading...</span>}>
+                        <SVGChild />
+                        {/* <SuspenseTrigger /> */}
+                    </Suspense>
+                    {/* {SVGChild} */}
                 </SVGWrapper>
             </QuickActionIcon>
             <QuickActionDescription>
                 <h3>{title}</h3>
-                <p>{description}</p>
+                {showDescription && <p>{description}</p>}
             </QuickActionDescription>
         </StyledWrapper>
     )

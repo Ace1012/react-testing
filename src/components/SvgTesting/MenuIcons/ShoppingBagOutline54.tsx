@@ -8,7 +8,7 @@ interface IShoppingBagOutline54Props extends IMenuIcon {
 const ShoppingBagOutline54 = ({ fill = "white", size}: IShoppingBagOutline54Props) => {
     const { myThemeSize } = useMyTheme();
     return (
-        <svg width={size ?? myThemeSize} height={size ?? myThemeSize} viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <title>MenuIconShoppingBagOutline54</title>
             <g id="MenuIconShoppingBagOutline54" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Group-2" transform="translate(12.000000, 6.530000)" fill={fill}>
