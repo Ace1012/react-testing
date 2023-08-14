@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { useMyTheme } from "./myThemeContext";
 import SVGWrapper from "./svgWrapper";
-import { menuIconsMapper } from "./@types/MenuIconsMap/menuIconsMap";
+import { menuIconsMapper } from "./MenuIconsMap/menuIconsMap";
 import { Suspense } from "react";
 
 interface IQuickActionProps {
