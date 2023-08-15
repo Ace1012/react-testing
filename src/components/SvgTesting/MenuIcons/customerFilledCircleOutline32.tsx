@@ -1,10 +1,8 @@
-import { useMyTheme } from "../myThemeContext";
 import { IMenuIcon } from "./interfaces";
 
 interface ICustomerFilledCircleOutlineProps extends IMenuIcon { }
 
-const CustomerFilledCircleOutline = ({ fill = "white", size }: ICustomerFilledCircleOutlineProps) => {
-    const { myThemeSize } = useMyTheme();
+const CustomerFilledCircleOutline32 = ({ fill = "white", size }: ICustomerFilledCircleOutlineProps) => {
     return (
         <svg viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <title>MenuIconCustomerFilledCircleOutline32</title>
@@ -16,4 +14,4 @@ const CustomerFilledCircleOutline = ({ fill = "white", size }: ICustomerFilledCi
         </svg>
     )
 }
-export default CustomerFilledCircleOutline;
+export default CustomerFilledCircleOutline32;

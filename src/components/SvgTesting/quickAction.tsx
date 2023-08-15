@@ -1,14 +1,14 @@
-import { styled } from "@mui/system";
-import { useMyTheme } from "./myThemeContext";
+import { styled } from "@mui/material";
 import SVGWrapper from "./svgWrapper";
 import { menuIconsMapper } from "./MenuIconsMap/menuIconsMap";
 import { Suspense } from "react";
+import { Property } from "csstype";
 
-interface IQuickActionProps {
-    children?: React.ReactNode;
+export interface IQuickActionProps {
     title: string;
     description: string;
-    iconName: Menu.Icon.MenuIconName
+    iconName: Menu.Icon.MenuIconName;
+    color?: Property.Color
 }
 
 const StyledWrapper = styled("div")`
@@ -19,6 +19,7 @@ const StyledWrapper = styled("div")`
     gap: 0.5rem;
     display: flex;
     border-radius: 4px;
+    max-width: 400px;
     transition: all ease-in-out 150ms;
 
     &:hover{
@@ -27,6 +28,13 @@ const StyledWrapper = styled("div")`
     }
 `
 
+const SuspenseFallback = styled("div")`
+    background-color: orange;
+    width: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+`;
+
 const QuickActionIcon = styled("div")`
     display: flex;
     justify-content: center;
@@ -34,11 +42,16 @@ const QuickActionIcon = styled("div")`
 `
 
 const QuickActionDescription = styled("div")`
-    background-color: transparent;
+    /* background-color: yellow; */
     display: flex;
     flex-flow: column;
     justify-content: center;
     color: black;
+
+    & *{
+        /* background-color: orange; */
+        margin: 0;
+    }
     
     ${({ theme }) => theme.breakpoints.down("sm")}{
         & > p{
@@ -63,32 +76,26 @@ const QuickActionDescription = styled("div")`
 
 `
 
-//TODO: - Create a map -> key: Name of icon | value: JSX.Element to be rendered.
-//      - Incorporate lazy-loading.
-
-const QuickAction = ({ children, title, description, iconName }: IQuickActionProps) => {
-    const { myThemeSize: size, showDescription } = useMyTheme();
-
+const QuickAction = ({ title, description, iconName, color }: IQuickActionProps) => {
     const SVGChild = menuIconsMapper[iconName];
     const SuspenseTrigger = () => {
-        throw new Promise(() => { })
+        throw Promise.reject();
     }
 
     return (
         <StyledWrapper>
             <QuickActionIcon>
-                <SVGWrapper size={size} fill="white">
-                    {/* {children} */}
-                    <Suspense fallback={<span>Loading...</span>}>
+                <SVGWrapper size={"md"} color={color ?? "white"}>
+                    <Suspense fallback={<SuspenseFallback />}>
                         <SVGChild />
                         {/* <SuspenseTrigger /> */}
                     </Suspense>
-                    {/* {SVGChild} */}
                 </SVGWrapper>
             </QuickActionIcon>
             <QuickActionDescription>
                 <h3>{title}</h3>
-                {showDescription && <p>{description}</p>}
+                {/* {showDescription && <p>{description}</p>} */}
+                <p>{description}</p>
             </QuickActionDescription>
         </StyledWrapper>
     )

@@ -1,5 +1,5 @@
 import QuickActionsContainer from "./quickActionsContainer";
-import { ThemeProvider, alpha, createTheme, getContrastRatio, styled } from "@mui/system";
+import { CssBaseline, ThemeProvider, createTheme, styled } from "@mui/material";
 
 interface ISvgPlaygroundProps { }
 
@@ -12,29 +12,54 @@ const StyledWrapper = styled("div")`
     align-items: center;
     height: 100%;
     width: 100%;
+    color: #bc8f8f;
 
     & svg {
         transition: all ease-in-out 150ms;
     }
 `
-const primaryBase = '#ff0000';
-const primaryColor = alpha(primaryBase, 1);
 
 const SvgPlayground = ({ }: ISvgPlaygroundProps) => {
     const theme = createTheme({
+        components: {
+            MuiCssBaseline: {
+                styleOverrides: {
+                    margin: 0,
+                    padding: 0,
+                    boxSizing: "border-box"
+                }
+            }
+        },
         palette: {
-            primary: primaryColor,
-            secondary: "#bc8f8f",
-            tertiary: "#bcffa7",
-            light: alpha(primaryBase, 0.5),
-            dark: alpha(primaryBase, 0.9),
-            iconColor: {
-                light: "#ffffff",
-                dark: "#000000",
-            },
-            contrastText: getContrastRatio(primaryColor, '#fff') > 4.5 ? '#fff' : '#111',
+            primary: {
+                main: "#bc8f8f"
+            }
+        },
+        breakpoints: {
+            values: {
+                xl: 72,
+                lg: 54,
+                md: 36,
+                sm: 18,
+                xs: 9,
+            }
         },
     })
+
+    // const theme = createTheme({
+    //     palette: {
+    //         primary: primaryColor,
+    //         secondary: "#bc8f8f",
+    //         tertiary: "#bcffa7",
+    //         light: alpha(primaryBase, 0.5),
+    //         dark: alpha(primaryBase, 0.9),
+    //         iconColor: {
+    //             light: "#ffffff",
+    //             dark: "#000000",
+    //         },
+    //         contrastText: getContrastRatio(primaryColor, '#fff') > 4.5 ? '#fff' : '#111',
+    //     },
+    // })
 
     return (
         <StyledWrapper>
@@ -42,6 +67,7 @@ const SvgPlayground = ({ }: ISvgPlaygroundProps) => {
                 color: "black"
             }}>Quick Actions Nav</h1>
             <ThemeProvider theme={theme}>
+                <CssBaseline />
                 <QuickActionsContainer />
             </ThemeProvider>
         </StyledWrapper>

@@ -1,6 +1,5 @@
-import { styled } from "@mui/system";
+import { styled } from "@mui/material";
 import QuickAction from "./quickAction";
-import { BarcodeOutline54, CustomerFilledCircleOutline32, CustomerFilledCircleOutline54, SearchOutline54, ShoppingBagOutline54 } from "./MenuIcons";
 import { MyThemeProvider } from "./myThemeContext";
 
 interface IQuickActionsContainerProps { }
@@ -19,18 +18,6 @@ const QuickActionsContainer = ({ }: IQuickActionsContainerProps) => {
     return (
         <StyledWrapper>
             <MyThemeProvider>
-                {/* <QuickAction title="Scan" description="Lorem ipsum dolor sit amet consectetur.">
-                    <BarcodeOutline54 fill="green" />
-                </QuickAction>
-                <QuickAction title="Search" description="Lorem ipsum dolor sit amet consectetur.">
-                    <SearchOutline54 fill="green" />
-                </QuickAction>
-                <QuickAction title="Customer" description="Lorem ipsum dolor sit amet consectetur.">
-                    <CustomerFilledCircleOutline32 fill="green" />
-                </QuickAction>
-                <QuickAction title="Cart" description="Lorem ipsum dolor sit amet consectetur.">
-                    <ShoppingBagOutline54 fill="green" />
-                </QuickAction> */}
                 <QuickAction title="Scan" description="Lorem ipsum dolor sit amet consectetur." iconName="BARCODE_OUTLINE_54" />
                 <QuickAction title="Search" description="Lorem ipsum dolor sit amet consectetur." iconName="SEARCH_OUTLINE_54" />
                 <QuickAction title="Customer" description="Lorem ipsum dolor sit amet consectetur." iconName="CUSTOMER_FILLED_CIRCLE_OUTLINE_32" />

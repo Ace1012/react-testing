@@ -1,4 +1,3 @@
-import { useMyTheme } from "../myThemeContext";
 import { IMenuIcon } from "./interfaces";
 
 interface ISearchOutline54Props extends IMenuIcon {
@@ -6,7 +5,6 @@ interface ISearchOutline54Props extends IMenuIcon {
 }
 
 const SearchOutline54 = ({ fill = "white", size }: ISearchOutline54Props) => {
-    const { myThemeSize } = useMyTheme();
     return (
         <svg viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" >
             <title>MenuIconSearchOutline54</title>

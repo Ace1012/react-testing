@@ -2,14 +2,12 @@ import { IMenuIcon } from "./interfaces";
 
 interface ICustomerFilledCircleOutline54Props extends IMenuIcon { }
 
-const CustomerFilledCircleOutline54 = ({ fill = "white", size = 54 }: ICustomerFilledCircleOutline54Props) => {
+const CustomerFilledCircleOutline54 = ({ fill = "white", size }: ICustomerFilledCircleOutline54Props) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={size ?? 54}
-            height={size ?? 54}
-            // viewBox="7 7 40 40"
-            viewBox={`0 0 54 54`}
+            viewBox="12 12 31 31"
+            // viewBox={`0 0 54 54`}
             version="1.1"
         >
             <path

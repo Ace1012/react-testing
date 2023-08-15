@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import useUpdateWindowDimensions from "./hooks/useUpdateWindowDimensions";
 
 interface IThemeContext {
     myThemeSize: number;
@@ -13,26 +14,24 @@ const ThemeContext = createContext({} as IThemeContext)
 
 const MyThemeProvider = ({ children }: IThemeProviderProps) => {
     const [size, setSize] = useState(54);
-    const [showDescription, setShowDescription] = useState(true);
+    const showDescription = useMemo(() => size > 36, [size])
+    const { width } = useUpdateWindowDimensions();
 
-    function resizeIcons() {
-        const width = window.innerWidth;
+    function resizeIcons(width: number) {
 
         switch (true) {
             case width <= 600: {
                 console.log("small")
                 setSize(18);
             }
-            break;
+                break;
             case width <= 900: {
                 console.log("medium")
-                setShowDescription(false)
                 setSize(36)
             }
                 break;
             case width <= 1200: {
                 console.log("large")
-                setShowDescription(true)
                 setSize(54)
             }
                 break;
@@ -41,12 +40,8 @@ const MyThemeProvider = ({ children }: IThemeProviderProps) => {
     }
 
     useEffect(() => {
-        window.addEventListener("resize", resizeIcons)
-
-        return () => {
-            window.removeEventListener("resize", resizeIcons)
-        }
-    }, []);
+        resizeIcons(width)
+    }, [width]);
 
     return (
         <ThemeContext.Provider value={{ myThemeSize: size, showDescription }}>
