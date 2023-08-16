@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { Address } from "../@types/countrySlotsMap";
 
-const netherlandsOverride: Address.Overrides.CountryOverrides<"NL"> = {
+const netherlandsOverride: Address.CountryOverrides<"NL"> = {
     NL: {
         postCode: ({ address, country }) => (
             <Typography >

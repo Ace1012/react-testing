@@ -58,9 +58,6 @@ const AddressDisplay = (props: AddressDisplayProps) => {
 
     const override = countryOverrides[address.country];
 
-    // const NameOverride = override?.name ? override.name({ address, country, email }) : null;
-    // const PostCodeOverride = override?.postCode ? override?.postCode({ address, country, email }) : null;
-    // const StreetOverride = override?.street ? override.street({ address, country, email }) : null;
     const NameOverride = override?.name ? override.name : null;
     const PostCodeOverride = override?.postCode ? override?.postCode : null;
     const StreetOverride = override?.street ? override.street : null;
