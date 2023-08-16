@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { Country, countries } from "countries-list";
-import { countryOverrides } from "./countrySlotsMap/index";
+import { countryOverrides } from "./countryOverrides/index";
 
 export interface Address {
     objectKey: string;
