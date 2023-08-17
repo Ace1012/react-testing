@@ -15,6 +15,7 @@ import UserTable from './components/Table/userTable';
 import MUIPlayground from './components/MUIPlayground/muiPlayground';
 import { ReactQueryPlayground } from './components/ReactQuery';
 import SvgPlayground from './components/SvgTesting/svgPlayground';
+import ToDoZustandPlayground from './components/ToDo-Zustand';
 
 const STYLES: React.CSSProperties = {
   display: "flex",
@@ -68,7 +69,8 @@ function App() {
       {/* <UserTable /> */}
       {/* <MUIPlayground /> */}
       {/* <ReactQueryPlayground /> */}
-      <SvgPlayground />
+      {/* <SvgPlayground /> */}
+      <ToDoZustandPlayground />
     </div>
   )
 }
