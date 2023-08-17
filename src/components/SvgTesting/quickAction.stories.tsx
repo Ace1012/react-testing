@@ -28,6 +28,7 @@ const ResetCssDecorator: Decorator = (Story) => {
 const meta: Meta<typeof QuickAction> = {
   title: "QuickActions",
   component: QuickAction,
+  tags: ["autodocs"],
   args: {
     color: "white"
   },

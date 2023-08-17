@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import { AddressOverrides } from "../@types/countrySlotsMap";
 
-const netherlandsOverride: AddressOverrides.CountryOverride<"NL"> = {
-    NL: ({ address, country, email, isWithinOrder }) => (
+const defaultAddress: AddressOverrides.CountryOverride<"CA"> = {
+    CA: ({ address, country, email, isWithinOrder }) => (
         <>
             <Typography fontWeight={!isWithinOrder ? 600 : ""}>
                 {address.firstName} {address.lastName}
@@ -13,8 +13,8 @@ const netherlandsOverride: AddressOverrides.CountryOverride<"NL"> = {
                 </Typography >
                 : null
             }
-            <Typography>
-                {address.postCode} {address.city} {country?.name || address.country}
+            <Typography >
+                {address.city} {address.postCode}, {country?.name || address.country}
             </Typography>
             <Typography >
                 {address.streetNumber} {address.street}
@@ -23,4 +23,4 @@ const netherlandsOverride: AddressOverrides.CountryOverride<"NL"> = {
     )
 }
 
-export default netherlandsOverride;
+export default defaultAddress;

@@ -1,46 +1,40 @@
 import { Country, countries } from "countries-list";
 import { Address } from "../../addressDisplay";
 
-declare namespace Address {
+declare namespace AddressOverrides {
   /**
-   * Country code e.g "CA", "DE" etc
+   * Country code e.g "CA", "DE" etc.
    */
   export type CountryCode = keyof typeof countries;
 
   /**
-   * Keys  corresponding to the possible address overrides
+   * {@link AddressOverrideComponent} props definition
    */
-  export type OverrideKeys = "name" | "street" | "postCode";
-
-  /**
-   * SectionOverride props definition
-   */
-  export interface SectionOverrideProps {
+  export interface AddressOverrideComponentProps {
     address: Address;
-    country: Country | undefined;
+    country?: Country;
     email?: string;
+    isWithinOrder?: boolean;
   }
 
   /**
    * React.FC component used to override a specific section
    */
-  export type SectionOverride = React.FC<SectionOverrideProps>;
+  export type AddressOverrideComponent =
+    React.FC<AddressOverrideComponentProps>;
 
   /**
-   * Map of available overrides of specific sections
+   * Map of a country's code {@link CountryCodeInstance} with its corresponding override {@link AddressOverrideComponent}
    */
-  export type OverrideSchema = Partial<Record<OverrideKeys, SectionOverride>>;
-
-  /**
-   * Map of a country's code with its corresponding overrides
-   */
-  export type CountryOverrides<T extends CountryCode> = Record<
-    T,
-    OverrideSchema
+  export type CountryOverride<CountryCodeInstance extends CountryCode> = Record<
+    CountryCodeInstance,
+    AddressOverrideComponent
   >;
 
   /**
-   * Map of all available country codes with their corresponding overrides
+   * Map of all available country overrides
    */
-  export type OverrideMap = Partial<Record<CountryCode, OverrideSchema>>;
+  export type OverrideMap = Partial<
+    Record<CountryCode, AddressOverrideComponent>
+  >;
 }

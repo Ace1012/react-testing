@@ -5,6 +5,7 @@ import { menuIconsMapper } from "../../components/SvgTesting/MenuIconsMap/menuIc
 const meta: Meta<typeof SVGWrapper> = {
     title: "SVGWrapper",
     component: SVGWrapper,
+    tags: ["autodocs"],
     args: {
         size: "md",
         color: "white"

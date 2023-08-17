@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { Country, countries } from "countries-list";
 import { countryOverrides } from "./countryOverrides/index";
 
@@ -34,6 +33,7 @@ export interface Address {
 interface AddressDisplayProps {
     address?: Address;
     email?: string;
+    isWithinOrder?: boolean
 }
 
 /**
@@ -42,7 +42,7 @@ interface AddressDisplayProps {
  * @param code ISO 3166-1 alpha-2 country code
  * @returns
  */
-export const getCountry = (code?: Address["country"]) => {
+export const getCountry = (code: Address["country"]) => {
     if (!code) return;
 
     const country = countries[code.toUpperCase() as Address["country"]];
@@ -51,60 +51,31 @@ export const getCountry = (code?: Address["country"]) => {
 };
 
 const AddressDisplay = (props: AddressDisplayProps) => {
-    const { address, email } = props;
-    const country = getCountry(address?.country);
+    const { address, email, isWithinOrder } = props;
 
     if (!address) return null;
 
-    const override = countryOverrides[address.country];
+    const country = getCountry(address.country);
 
-    const NameOverride = override?.name ? override.name : null;
-    const PostCodeOverride = override?.postCode ? override?.postCode : null;
-    const StreetOverride = override?.street ? override.street : null;
+    const DefaultAddress = countryOverrides["CA"]!
+    const Override = countryOverrides[address.country];
 
     return (
-        <div>
-            {NameOverride
-                ? <NameOverride
+        <>
+            {Override
+                ? <Override
                     address={address}
                     country={country}
                     email={email}
+                    isWithinOrder={isWithinOrder}
                 />
-                : <Typography >
-                    <b>
-                        {address.firstName} {address.lastName}
-                    </b>
-                </Typography>
-            }
-
-            {email &&
-                (<Typography >
-                    {email}
-                </Typography>)
-            }
-
-            {StreetOverride
-                ? <StreetOverride
+                : <DefaultAddress
                     address={address}
                     country={country}
                     email={email}
-                />
-                : <Typography >
-                    {address.streetNumber} {address.street}
-                </Typography>
-            }
-
-            {PostCodeOverride
-                ? <PostCodeOverride
-                    address={address}
-                    country={country}
-                    email={email}
-                />
-                : <Typography >
-                    {address.city} {address.postCode}, {country?.name || address.country}
-                </Typography>
-            }
-        </div>
+                    isWithinOrder={isWithinOrder}
+                />}
+        </>
     );
 };
 
