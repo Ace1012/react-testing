@@ -16,6 +16,10 @@ import MUIPlayground from './components/MUIPlayground/muiPlayground';
 import { ReactQueryPlayground } from './components/ReactQuery';
 import SvgPlayground from './components/SvgTesting/svgPlayground';
 import ToDoZustandPlayground from './components/ToDo-Zustand';
+import ApplicantsTable from './components/ApplicantsPhantom';
+import CustomReactPlayer from './components/ReactPlayer/CustomReactPlayer';
+import ReactTable from './components/ReactTable/ReactTable';
+import FullWidthToast from './components/FullWidthToast/fullWidthToast';
 
 const STYLES: React.CSSProperties = {
   display: "flex",
@@ -40,38 +44,38 @@ function App() {
     </h1>
   )
 
-  // useEffect(() => {
-  //   console.log("App rerendered...")
-  // });
-
   return (
-    <div style={STYLES}>
-      {/* <h1>App</h1> */}
-      {/* {Timer({ render })} */}
-      {/* <Timer render={render} /> */}
-      {/* <Counter /> */}
-      {/* <Welcome user='Phantom' primary /> */}
-      {/* <Users /> */}
-      {/* <ReduceUsers /> */}
-      {/* <RandomReducer /> */}
-      {/* <ReduxTodos /> */}
-      {/* <MemoizeTest /> */}
-      {/* <SearchUsers /> */}
-      {/* <ThemeProvider>
-        <RedditThread />
-      </ThemeProvider> */}
-      {/* <FormProvider>
-        <CustomForm />
-        <CustomFormDisplay label='firstName' />
-        <CustomFormDisplay label='lastName' />
-      </FormProvider> */}
-      {/* <StyledComponentsPlayground /> */}
-      {/* <UserTable /> */}
-      {/* <MUIPlayground /> */}
-      {/* <ReactQueryPlayground /> */}
-      {/* <SvgPlayground /> */}
-      <ToDoZustandPlayground />
-    </div>
+    // <div style={STYLES}>
+    //   {/* <h1>App</h1> */}
+    //   {/* {Timer({ render })} */}
+    //   {/* <Timer render={render} /> */}
+    //   {/* <Counter /> */}
+    //   {/* <Welcome user='Phantom' primary /> */}
+    //   {/* <Users /> */}
+    //   {/* <ReduceUsers /> */}
+    //   {/* <RandomReducer /> */}
+    //   {/* <ReduxTodos /> */}
+    //   {/* <MemoizeTest /> */}
+    //   {/* <SearchUsers /> */}
+    //   {/* <ThemeProvider>
+    //     <RedditThread />
+    //   </ThemeProvider> */}
+    //   {/* <FormProvider>
+    //     <CustomForm />
+    //     <CustomFormDisplay label='firstName' />
+    //     <CustomFormDisplay label='lastName' />
+    //   </FormProvider> */}
+    //   {/* <StyledComponentsPlayground /> */}
+    //   {/* <UserTable /> */}
+    //   {/* <MUIPlayground /> */}
+    //   {/* <ReactQueryPlayground /> */}
+    //   {/* <SvgPlayground /> */}
+    //   {/* <ToDoZustandPlayground /> */}
+    //   {/* <ApplicantsTable /> */}
+    //   {/* <CustomReactPlayer /> */}
+    // </div>
+    // <ReactTable />
+    <FullWidthToast />
   )
 }
 
