@@ -1,25 +1,33 @@
-import './App.css'
-import React, { Suspense, useEffect, useState } from 'react'
-import { Timer, ActivityIndicator, Counter, Welcome, Users, ReduceUsers } from './components';
-import SearchUsers from './components/displayUsers/searchUsers';
-import RedditThread from './components/redditThread/redditThread';
-import CustomForm from './components/form/customForm';
-import { ThemeProvider } from './contexts/theme';
-import RandomReducer from './components/randomReducer';
-import ReduxTodos from './components/reduxTodos/reduxTodos';
-import MemoizeTest from './components/memoizeTest';
-import { FormProvider } from './contexts/form';
-import CustomFormDisplay from './components/form/customFormDisplay';
-import StyledComponentsPlayground from './components/styledComponentsPlayground';
-import UserTable from './components/Table/userTable';
-import MUIPlayground from './components/MUIPlayground/muiPlayground';
-import { ReactQueryPlayground } from './components/ReactQuery';
-import SvgPlayground from './components/SvgTesting/svgPlayground';
-import ToDoZustandPlayground from './components/ToDo-Zustand';
-import ApplicantsTable from './components/ApplicantsPhantom';
-import CustomReactPlayer from './components/ReactPlayer/CustomReactPlayer';
-import ReactTable from './components/ReactTable/ReactTable';
-import FullWidthToast from './components/FullWidthToast/fullWidthToast';
+import "./App.css";
+import React, { Suspense, useEffect, useState } from "react";
+import {
+  Timer,
+  ActivityIndicator,
+  Counter,
+  Welcome,
+  Users,
+  ReduceUsers,
+} from "./components";
+import SearchUsers from "./components/displayUsers/searchUsers";
+import RedditThread from "./components/redditThread/redditThread";
+import CustomForm from "./components/form/customForm";
+import { ThemeProvider } from "./contexts/theme";
+import RandomReducer from "./components/randomReducer";
+import ReduxTodos from "./components/reduxTodos/reduxTodos";
+import MemoizeTest from "./components/memoizeTest";
+import { FormProvider } from "./contexts/form";
+import CustomFormDisplay from "./components/form/customFormDisplay";
+import StyledComponentsPlayground from "./components/styledComponentsPlayground";
+import UserTable from "./components/Table/userTable";
+import MUIPlayground from "./components/MUIPlayground/muiPlayground";
+import { ReactQueryPlayground } from "./components/ReactQuery";
+import SvgPlayground from "./components/SvgTesting/svgPlayground";
+import ToDoZustandPlayground from "./components/ToDo-Zustand";
+import ReactTable from "./components/ReactTable/ReactTable";
+import FullWidthToast from "./components/FullWidthToast/fullWidthToast";
+import DialogsProvider from "./components/Dialogs/DialogsProvider";
+import { EventBus } from "./components/EventBus/event-bus";
+import { DialogEvent } from "./components/Dialogs/Dialogs";
 
 const STYLES: React.CSSProperties = {
   display: "flex",
@@ -33,16 +41,25 @@ const STYLES: React.CSSProperties = {
   width: "100vw",
   padding: "1rem",
   gap: "1rem",
-  overflow: "hidden"
-}
+  overflow: "hidden",
+};
 
 function App() {
-
   const render = (time: number) => (
-    <h1 id='timer'>
-      {new Date(time).toLocaleTimeString()}
-    </h1>
-  )
+    <h1 id="timer">{new Date(time).toLocaleTimeString()}</h1>
+  );
+
+  function testDialog() {
+    EventBus.getInstance().dispatch(
+      new DialogEvent({
+        id: 1,
+        type: "dialog-event",
+        props: {
+          dude: "hey",
+        },
+      })
+    );
+  }
 
   return (
     // <div style={STYLES}>
@@ -75,8 +92,19 @@ function App() {
     //   {/* <CustomReactPlayer /> */}
     // </div>
     // <ReactTable />
-    <FullWidthToast />
-  )
+    // <FullWidthToast />
+    <>
+      <DialogsProvider />
+      <button
+        style={{
+          color: " white",
+        }}
+        onClick={testDialog}
+      >
+        Toggle Dialog
+      </button>
+    </>
+  );
 }
 
-export default App
+export default App;
